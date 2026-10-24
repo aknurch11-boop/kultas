@@ -4,3 +4,4 @@ data/
 .env
 *.log
 archive/
+for-slides/
