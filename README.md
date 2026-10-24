@@ -49,9 +49,9 @@ npm start          # http://localhost:3000
 
 ## Деплой на Render (бесплатно)
 
-1. Загрузите проект в **публичный** репозиторий GitHub.
-2. [render.com](https://render.com) → **New → Web Service** → выберите репозиторий.
-3. Runtime **Node**, Build `npm install`, Start `npm start`, тариф **Free** → **Create Web Service**.
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/aknurch11-boop/kultas)
+
+Нажмите кнопку → войдите через GitHub → **Deploy Blueprint**. Настройки уже лежат в `render.yaml`: Node, `npm install`, `npm start`, тариф Free.
 
 Переменные окружения (все необязательны). Значения по умолчанию — **предположения команды**:
 
