@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>KülTas — запросы покупателей</title>
+  <script>try{var t=localStorage.getItem("kultas-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Serif+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header id="shell"></header>
+
+  <main class="wrap">
+    <section>
+      <h1 data-i18n="rq_title"></h1>
+      <p class="lead" data-i18n="rq_lead"></p>
+      <div class="rq-layout">
+        <div>
+          <div class="toolbar">
+            <div class="chips" id="rqFilter">
+              <button class="chip on" data-type="" data-i18n="rq_all"></button>
+              <button class="chip" data-type="fly_ash" data-i18n="type_fly_ash"></button>
+              <button class="chip" data-type="ash_slag" data-i18n="type_ash_slag"></button>
+              <button class="chip" data-type="slag" data-i18n="type_slag"></button>
+              <button class="chip" data-type="cenospheres" data-i18n="type_cenospheres"></button>
+            </div>
+          </div>
+          <div class="rq-list" id="rqList"></div>
+        </div>
+
+        <form class="card side-form" id="rqForm">
+          <h3 data-i18n="rq_new"></h3>
+          <label class="field"><span data-i18n="rq_company"></span><input id="rCompany" maxlength="80" required></label>
+          <label class="field"><span data-i18n="f_type"></span>
+            <select id="rType"><option value="fly_ash" data-i18n="type_fly_ash"></option><option value="ash_slag" data-i18n="type_ash_slag"></option><option value="slag" data-i18n="type_slag"></option><option value="cenospheres" data-i18n="type_cenospheres"></option></select>
+          </label>
+          <div class="row" style="flex-wrap:nowrap">
+            <label class="field" style="flex:1"><span data-i18n="db_tons"></span><input id="rTons" type="number" min="1" required></label>
+            <label class="field" style="flex:1"><span data-i18n="db_city"></span><input id="rCity" maxlength="40"></label>
+          </div>
+          <div class="row" style="flex-wrap:nowrap">
+            <label class="field" style="flex:1"><span data-i18n="rq_deadline"></span><input id="rDeadline" type="date"></label>
+            <label class="field" style="flex:1"><span data-i18n="rq_max_price"></span><input id="rPrice" type="number" min="0" step="500"></label>
+          </div>
+          <label class="field"><span data-i18n="rq_comment"></span><textarea id="rComment" rows="3" maxlength="300"></textarea></label>
+          <label class="field"><span data-i18n="order_contact"></span><input id="rContact" maxlength="80"></label>
+          <p class="error" id="rError" hidden></p>
+          <p class="ok-msg" id="rOk" hidden></p>
+          <button class="btn primary" type="submit" data-i18n="rq_submit"></button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer id="foot"></footer>
+  <script type="module" src="/js/requests.js"></script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>KülTas — отследить груз</title>
+  <script>try{var t=localStorage.getItem("kultas-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Serif+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header id="shell"></header>
+
+  <main class="wrap track-page" id="page">
+    <div class="card find" id="findBox" hidden>
+      <h2 data-i18n="track_title"></h2>
+      <p class="muted" data-i18n="track_box_lead"></p>
+      <form class="row" id="findForm">
+        <input id="findCode" data-i18n-ph="track_ph" autocomplete="off" style="flex:1;min-width:200px">
+        <button class="btn primary" type="submit" data-i18n="track_btn"></button>
+      </form>
+      <p class="error" id="findError" hidden></p>
+    </div>
+
+    <div id="tracker" hidden>
+      <div class="track-head">
+        <div>
+          <p class="eyebrow" data-i18n="track_title"></p>
+          <h1><span class="code" id="tCode"></span></h1>
+        </div>
+        <div class="row no-print">
+          <a class="btn ghost sm" id="tPassport" data-i18n="open_passport"></a>
+          <button class="btn ghost sm" id="tShare" data-i18n="share"></button>
+        </div>
+      </div>
+
+      <div class="stepper" id="stepper"></div>
+
+      <div class="track-grid">
+        <div id="map" class="map track-map"></div>
+        <aside class="card side">
+          <div class="eta" id="etaBox"><span data-i18n="eta"></span><b id="tEta">—</b></div>
+          <p class="status-msg" id="tMsg"></p>
+          <div class="progress"><span id="tProgress"></span></div>
+          <dl class="facts">
+            <div><dt data-i18n="from"></dt><dd id="tFrom"></dd></div>
+            <div><dt data-i18n="to"></dt><dd id="tTo"></dd></div>
+            <div><dt data-i18n="cargo"></dt><dd id="tCargo"></dd></div>
+            <div><dt data-i18n="route"></dt><dd id="tRoute"></dd></div>
+            <div><dt data-i18n="driver"></dt><dd id="tDriver"></dd></div>
+            <div><dt data-i18n="truck"></dt><dd id="tTruck"></dd></div>
+          </dl>
+          <div class="cert" id="cert" hidden>
+            <h3 data-i18n="cert_title"></h3>
+            <p id="certText"></p>
+            <p class="demo-note" data-i18n="impact_note"></p>
+            <button class="btn green sm no-print" id="certPrint" data-i18n="cert_print"></button>
+          </div>
+          <p class="demo-note" data-i18n="demo_speed"></p>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <footer id="foot"></footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+  <script type="module" src="/js/track.js"></script>
+</body>
+</html>

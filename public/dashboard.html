@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>KülTas — кабинет ТЭЦ</title>
+  <script>try{var t=localStorage.getItem("kultas-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Serif+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header id="shell"></header>
+
+  <main class="wrap dash">
+    <h1 data-i18n="db_title"></h1>
+    <p class="lead" data-i18n="db_lead"></p>
+
+    <div class="tiles" id="tiles">
+      <div class="card tile accent"><b data-k="tonsDelivered">—</b><span data-i18n="impact_removed"></span></div>
+      <div class="card tile"><b data-k="co2Avoided">—</b><span data-i18n="impact_co2"></span></div>
+      <div class="card tile"><b data-k="tonsInTransit">—</b><span data-i18n="impact_transit"></span></div>
+      <div class="card tile"><b data-k="tonsAvailable">—</b><span data-i18n="impact_available"></span></div>
+    </div>
+
+    <div class="card panel">
+      <h3><span data-i18n="econ_title"></span> <span class="tag" data-i18n="econ_assumption"></span></h3>
+      <div class="econ" id="econ"></div>
+    </div>
+
+    <div class="card panel">
+      <h3 data-i18n="db_orders"></h3>
+      <table class="orders">
+        <thead><tr>
+          <th data-i18n="col_code"></th><th data-i18n="col_company"></th><th data-i18n="col_tons"></th>
+          <th data-i18n="col_route"></th><th data-i18n="col_status"></th>
+        </tr></thead>
+        <tbody id="orders"></tbody>
+      </table>
+    </div>
+
+    <div class="dash-grid">
+      <div class="card step" style="justify-content:center">
+        <h3 data-i18n="db_sell_title"></h3>
+        <p class="muted" data-i18n="db_sell_text"></p>
+        <a class="btn primary" href="/sell.html" data-i18n="sell_cta"></a>
+      </div>
+      <div id="map" class="map dash-map"></div>
+    </div>
+
+    <div class="card panel">
+      <h3 data-i18n="db_batches"></h3>
+      <table class="orders">
+        <tbody id="batches"></tbody>
+      </table>
+    </div>
+  </main>
+
+  <footer id="foot"></footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+  <script type="module" src="/js/dashboard.js"></script>
+</body>
+</html>

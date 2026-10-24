@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>KülTas — оформление заказа</title>
+  <script>try{var t=localStorage.getItem("kultas-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Serif+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header id="shell"></header>
+
+  <main class="wrap">
+    <section id="ckView">
+      <h1 data-i18n="ck_title"></h1>
+      <p class="lead" data-i18n="ck_lead"></p>
+      <div class="checkout">
+        <form class="card ck-form" id="ckForm">
+          <div class="row" style="flex-wrap:nowrap">
+            <label class="field" style="flex:1"><span data-i18n="order_company"></span><input id="kCompany" maxlength="80" required></label>
+            <label class="field" style="flex:1"><span data-i18n="order_contact"></span><input id="kContact" maxlength="80"></label>
+          </div>
+          <div class="row" style="justify-content:space-between">
+            <b data-i18n="order_dest"></b>
+            <button class="btn ghost sm" type="button" id="kGeo" data-i18n="my_location"></button>
+          </div>
+          <span class="hint" id="kDestHint" data-i18n="order_dest_hint"></span>
+          <div id="kMap" class="ck-map"></div>
+        </form>
+
+        <aside class="card ck-summary">
+          <h3 data-i18n="cart_title"></h3>
+          <div id="kLines"></div>
+          <div class="sum-row"><span data-i18n="ck_goods"></span><b id="kGoods">—</b></div>
+          <div class="sum-row muted"><span data-i18n="ck_delivery"></span><span id="kDelivery">—</span></div>
+          <div class="sum-row muted"><span data-i18n="ck_service"></span><span id="kService">—</span></div>
+          <div class="sum-row total"><span data-i18n="ck_total"></span><b id="kTotal">—</b></div>
+          <p class="error" id="kError" hidden></p>
+          <button class="btn primary block" id="kPlace" type="button" data-i18n="ck_place"></button>
+          <p class="demo-note" data-i18n="ck_note"></p>
+        </aside>
+      </div>
+    </section>
+
+    <div class="card done" id="doneView" hidden>
+      <div class="big">✅</div>
+      <h1 data-i18n="ck_done_title"></h1>
+      <p class="muted" data-i18n="ck_done_lead"></p>
+      <div class="done-links" id="doneLinks"></div>
+    </div>
+  </main>
+
+  <footer id="foot"></footer>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+  <script type="module" src="/js/checkout.js"></script>
+</body>
+</html>

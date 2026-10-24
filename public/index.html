@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>KülTas — B2B-магазин золы ТЭЦ</title>
+  <meta name="description" content="KülTas — B2B-магазин золы ТЭЦ: каталог проверенных партий с паспортом качества, корзина, запросы покупателей и трекинг доставки.">
+  <script>try{var t=localStorage.getItem("kultas-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Serif+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header id="shell"></header>
+
+  <main class="wrap">
+    <div class="banner">
+      <div>
+        <p class="eyebrow" data-i18n="hero_eyebrow"></p>
+        <h1 data-i18n="hero_title"></h1>
+        <p data-i18n="hero_lead"></p>
+        <div class="row">
+          <a class="btn primary" href="#catalog" data-i18n="banner_cta"></a>
+          <a class="btn ghost" href="/requests.html" data-i18n="banner_req"></a>
+        </div>
+        <small data-i18n="hero_sources"></small>
+      </div>
+      <div class="impact" id="impact">
+        <div><b data-k="tonsDelivered">0</b><span data-i18n="impact_removed"></span></div>
+        <div><b data-k="co2Avoided">0</b><span data-i18n="impact_co2"></span></div>
+        <div class="live"><b data-k="tonsInTransit">0</b><span data-i18n="impact_transit"></span></div>
+        <div><b data-k="tonsAvailable">0</b><span data-i18n="impact_available"></span></div>
+        <p class="impact-note" data-i18n="impact_note"></p>
+      </div>
+    </div>
+
+    <div class="usp">
+      <div class="card"><span class="num">01</span><div><b data-i18n="how1_t"></b><p data-i18n="how1_d"></p></div></div>
+      <div class="card"><span class="num">02</span><div><b data-i18n="how2_t"></b><p data-i18n="how2_d"></p></div></div>
+      <div class="card"><span class="num">03</span><div><b data-i18n="how3_t"></b><p data-i18n="how3_d"></p></div></div>
+      <div class="card"><span class="num">04</span><div><b data-i18n="how4_t"></b><p data-i18n="how4_d"></p></div></div>
+    </div>
+
+    <section id="types">
+      <h2 data-i18n="types_title"></h2>
+      <p class="lead" data-i18n="types_lead"></p>
+      <div class="types-guide" id="typesGuide"></div>
+      <div id="typesCredits"></div>
+    </section>
+
+    <section id="catalog">
+      <h2 data-i18n="catalog_title"></h2>
+      <p class="lead" data-i18n="catalog_lead"></p>
+      <div class="catalog">
+        <aside class="card filters" id="filters">
+          <h3><span data-i18n="filters"></span><button type="button" id="fReset" data-i18n="reset"></button></h3>
+          <div class="filter-group">
+            <span data-i18n="f_type"></span>
+            <div class="chips" id="fType"></div>
+          </div>
+          <div class="filter-group">
+            <span data-i18n="sub_title"></span>
+            <div class="chips" id="fSub"></div>
+          </div>
+          <label class="filter-group"><span data-i18n="f_city"></span><select id="fCity"></select></label>
+          <div class="filter-group">
+            <span data-i18n="radius"></span>
+            <div class="chips" id="fRadius">
+              <button class="chip on" data-r="0" data-i18n="radius_all"></button>
+              <button class="chip" data-r="100"></button>
+              <button class="chip" data-r="300"></button>
+            </div>
+            <button class="btn ghost sm" type="button" id="fromMe" data-i18n="my_location"></button>
+          </div>
+          <label class="filter-group"><span data-i18n="f_price_max"></span><input type="number" id="fPrice" min="0" step="500"></label>
+          <label class="filter-group"><span data-i18n="f_min_tons"></span><input type="number" id="fTons" min="0" step="25"></label>
+          <label class="check"><input type="checkbox" id="fLab"><span data-i18n="f_only_lab"></span></label>
+          <label class="check"><input type="checkbox" id="fFav"><span data-i18n="f_only_fav"></span></label>
+        </aside>
+
+        <div>
+          <div class="toolbar">
+            <b id="found"></b>
+            <div class="row">
+              <div class="chips" id="view">
+                <button class="chip on" data-view="grid" data-i18n="show_grid"></button>
+                <button class="chip" data-view="map" data-i18n="show_map"></button>
+              </div>
+              <select id="sort">
+                <option value="near" data-i18n="sort_near"></option>
+                <option value="cheap" data-i18n="sort_cheap"></option>
+                <option value="big" data-i18n="sort_big"></option>
+                <option value="new" data-i18n="sort_new"></option>
+              </select>
+            </div>
+          </div>
+          <div class="grid" id="grid"></div>
+          <div id="map" class="map" hidden></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="toolbar">
+        <h2 data-i18n="fresh_requests"></h2>
+        <a class="btn ghost sm" href="/requests.html" data-i18n="see_all"></a>
+      </div>
+      <div class="req-strip" id="reqStrip"></div>
+    </section>
+
+    <section id="calc">
+      <h2 data-i18n="calc_title"></h2>
+      <p class="lead" data-i18n="calc_lead"></p>
+      <div class="calc">
+        <div class="card calc-inputs">
+          <label class="field"><span data-i18n="calc_volume"></span><input type="number" id="cVolume" min="0" step="50"></label>
+          <label class="field"><span data-i18n="calc_cement"></span><input type="number" id="cCement" min="0" step="10"></label>
+          <label class="field"><span data-i18n="calc_replace"></span><input type="number" id="cReplace" min="0" max="100" step="1"></label>
+          <label class="field"><span data-i18n="calc_cement_price"></span><input type="number" id="cCementPrice" min="0" step="500"></label>
+          <label class="field"><span data-i18n="calc_ash_price"></span><input type="number" id="cAshPrice" min="0" step="500"></label>
+          <p class="calc-note" data-i18n="calc_note"></p>
+        </div>
+        <div class="card calc-out">
+          <div><b id="oAsh">—</b><span data-i18n="calc_out_ash"></span></div>
+          <div><b id="oSave">—</b><span data-i18n="calc_out_save"></span></div>
+          <div><b id="oCo2">—</b><span data-i18n="calc_out_co2"></span></div>
+          <div><b id="oTrucks">—</b><span data-i18n="calc_out_trucks"></span></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="foot"></footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+  <script type="module" src="/js/home.js"></script>
+</body>
+</html>

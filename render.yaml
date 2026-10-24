@@ -1,0 +1,12 @@
+# Деплой на Render в один клик: render.com → New → Blueprint → выбрать этот репозиторий.
+services:
+  - type: web
+    name: kultas
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/stats
+    envVars:
+      - key: NODE_VERSION
+        value: "22"

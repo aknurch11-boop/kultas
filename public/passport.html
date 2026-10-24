@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>KülTas — паспорт партии</title>
+  <script>try{var t=localStorage.getItem("kultas-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Serif+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header id="shell"></header>
+
+  <main class="wrap">
+    <article class="card passport" id="passport" hidden>
+      <div class="pp-head">
+        <div>
+          <p class="eyebrow" data-i18n="pp_kicker"></p>
+          <h1 id="ppTitle"></h1>
+          <p class="muted" id="ppCode"></p>
+          <p class="muted small" data-i18n="pp_sub"></p>
+        </div>
+        <div class="qr"><div id="qr"></div><div data-i18n="pp_scan"></div></div>
+      </div>
+
+      <div class="pp-grid">
+        <div>
+          <div class="gallery" id="ppGallery" hidden></div>
+          <div class="pp-buy no-print">
+            <div class="price"><span id="ppPriceBig"></span> <small data-i18n="per_t"></small></div>
+            <div class="buy">
+              <div class="stepper-input">
+                <button type="button" id="ppMinus">−</button>
+                <input type="number" min="1" id="ppQty">
+                <button type="button" id="ppPlus">+</button>
+              </div>
+              <button class="btn primary" id="ppCart" data-i18n="to_cart"></button>
+              <button class="icon-btn" id="ppFav"></button>
+              <button class="icon-btn" id="ppCompare"></button>
+            </div>
+            <span class="small muted" id="ppQtyTotal"></span>
+          </div>
+          <dl class="pp-facts">
+            <div><dt data-i18n="pp_origin"></dt><dd id="ppOrigin"></dd></div>
+            <div><dt data-i18n="pp_type"></dt><dd id="ppType"></dd></div>
+            <div><dt data-i18n="pp_available"></dt><dd id="ppTons"></dd></div>
+            <div><dt data-i18n="pp_price"></dt><dd id="ppPrice"></dd></div>
+            <div id="ppSubBox" hidden><dt data-i18n="pp_class"></dt><dd id="ppSub"></dd></div>
+            <div id="ppGostBox" hidden><dt data-i18n="pp_gost"></dt><dd id="ppGost"></dd></div>
+            <div id="ppShipBox" hidden><dt data-i18n="pp_ship"></dt><dd id="ppShip"></dd></div>
+          </dl>
+          <div id="ppMap" class="pp-map"></div>
+        </div>
+        <div>
+          <h3 data-i18n="pp_lab"></h3>
+          <table class="lab"><tbody id="ppLab"></tbody></table>
+          <p class="demo-note" id="ppDemo" data-i18n="pp_demo_note" hidden></p>
+          <div class="pp-co2" id="ppCo2"></div>
+          <p class="demo-note" data-i18n="impact_note"></p>
+          <div class="row no-print" style="margin-top:12px">
+            <button class="btn ghost" id="ppPrint" data-i18n="pp_print"></button>
+          </div>
+        </div>
+      </div>
+    </article>
+    <p class="find card" id="ppMissing" data-i18n="pp_not_found" hidden></p>
+  </main>
+
+  <footer id="foot"></footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script type="module" src="/js/passport.js"></script>
+</body>
+</html>
